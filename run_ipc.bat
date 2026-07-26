@@ -29,8 +29,10 @@ set /p PORT="openLCA IPC Server port (press Enter for 8080): "
 if "%PORT%"=="" set PORT=8080
 
 echo.
-echo Optional: type part of your model name to check only those processes
-echo (e.g. EOL, or IEA, or Turbine). Leave blank to check all foreground.
+echo Optional: narrow the check to part of the IEA-NRL 15MW model.
+echo   - by VARIATION: type  monopile  or  floating
+echo   - by LIFE-CYCLE PHASE: type  EOL  (end of life), MFG, Transport, etc.
+echo Leave blank to check the whole model (ecoinvent background is excluded).
 set /p FILTER="Filter word (or press Enter for all): "
 
 echo.
