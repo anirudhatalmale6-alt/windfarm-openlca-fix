@@ -1,0 +1,38 @@
+==============================================================================
+openLCA MODEL VALIDATION   (55 processes, 193 flows, 15 global params)
+==============================================================================
+
+ERRORS (1)  - would break calculation / import:
+  x [unit] EOL5.3.6.4—Material recovery & waste routing (CONTROL/SCADA): exchange 'CONTROL/SCADA recovered' has NO unit set
+
+WARNINGS (24)  - review, not necessarily wrong:
+  ! [casing] O3-IEA15-OP-Corrosion protection renewal-new / exchange 'diesel, burned in fishing vessel': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [balance] EOL5.3.3.3—Material recovery & waste routing (YAW SYSTEM (8× drives): IN 60,000 vs OUT 33,678 (delta +26,322 kg)
+  ! [balance] EOL5.3.3.5—Material recovery & waste routing (NACELLE COVER): IN 20,000 vs OUT 18,450 (delta +1,550 kg)
+  ! [balance] EOL5.3.3.1—Material recovery & waste routing (GENERATOR STATOR): IN 371,000 vs OUT 28,700 (delta +342,300 kg)
+  ! [balance] EOL5.3.3.4—Material recovery & waste routing (PITCH SYSTEM (3× drives): IN 35,000 vs OUT 24,700 (delta +10,300 kg)
+  ! [casing] O1-IEA15-OP-Scheduled maintenance / exchange 'diesel, burned in fishing vessel': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [balance] EOL5.3.3.6—Material recovery & waste routing (COOLING SYSTEM): IN 25,000 vs OUT 21,300 (delta +3,700 kg)
+  ! [casing] EOL5.3—Onshore cutting & separation / exchange 'diesel, burned in building machine': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [balance] EOL5.3.3.2—Material recovery & waste routing (MAINSHAFT/BEDPLATE): IN 225,000 vs OUT 226,814 (delta -1,814 kg)
+  ! [balance] EOL5.4.3—Material recovery & waste(HUB)Rotor and hub: IN 190,000 vs OUT 140,000 (delta +50,000 kg)
+  ! [casing] EOL5.2—Return transport to port / exchange 'diesel, burned in building machine': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [casing] EOL5.2—Return transport to port / exchange 'diesel, burned in fishing vessel': formula uses 'mgoliter_Mj' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [casing] I4-IEA15-INST-Commissioning & testing / exchange 'diesel, burned in fishing vessel': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [balance] EOL5.3.2—Material recovery & waste(MONOPILE): IN 1,300,000 vs OUT 1,286,280 (delta +13,720 kg)
+  ! [casing] I3-IEA15-INST-Cable lay & termination / exchange 'diesel, burned in fishing vessel': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [balance] EOL5.3.6.4—Material recovery & waste routing (CONTROL/SCADA): IN 0 vs OUT 5,550 (delta -5,550 kg)
+  ! [balance] EOL5.3.6.3—Material recovery & waste routing (POWER CONVERTER (15 MW): IN 22,000 vs OUT 21,710 (delta +290 kg)
+  ! [casing] I2-IEA15-INST-Tower, nacelle, rotor erection / exchange 'diesel, burned in fishing vessel': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [balance] EOL5.3.5—Material recovery & waste(DYNAMIC CABLE): IN 60,000 vs OUT 58,636 (delta +1,364 kg)
+  ! [balance] EOL5.4.2—Material recovery & waste(GENERATOR)Rotor and hub: IN 371,000 vs OUT 212,440 (delta +158,560 kg)
+  ! [casing] EOL5.1—Offshore disassembly / exchange 'diesel, burned in fishing vessel': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
+  ! [balance] EOL5.3.6.1—Material recovery & waste routing (TRANSFORMER (in-nacelle): IN 45,000 vs OUT 39,060 (delta +5,940 kg)
+  ! [balance] EOL5.3.6.2—Material recovery & waste routing (GIS SWITCHGEAR): IN 12,000 vs OUT 12,720 (delta -720 kg)
+  ! [orphan] flow never used by any process: 'Rotor+hub recovery aggregator'
+
+INFO:
+  - 285 exchange default-providers point to background datasets not in this export (normal for a foreground model).
+
+------------------------------------------------------------------------------
+RESULT: 1 error(s), 24 warning(s)

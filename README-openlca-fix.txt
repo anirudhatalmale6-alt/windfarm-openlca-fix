@@ -120,3 +120,42 @@ deteriorates a good fix. Two safeguards:
 Double-click helper: run_merge.bat asks for the two zip names and runs the
 merge for you (no terminal needed). Keep run_merge.bat, merge_openlca_fix.py
 and your two zips in the same folder.
+
+
+FULL MODEL VALIDATION  (validate_openlca.py)
+--------------------------------------------
+This checks a WHOLE export at once - not just mass balance. Run it on any
+export (before or after a merge):
+
+    python validate_openlca.py  YOUR_EXPORT.zip
+
+It reports, split into ERRORS (would break calculation) and WARNINGS (review):
+
+  A. Referential integrity - exchanges / providers pointing at objects that
+     don't exist. Background (ecoinvent) links are counted as INFO, not errors,
+     because they legitimately live outside a foreground export.
+  B. Process structure     - a process with no reference (quantitative) flow, or
+     more than one; an exchange with no unit; an exchange with no amount/formula.
+  C. Mass balance          - inputs vs outputs (mass flows only) for every
+     material-recovery routing process and component aggregator. Disassembly /
+     transport / cutting are intentionally NOT balance-checked (they carry the
+     turbine as an item + fuel, so kg in=out doesn't apply).
+  D. Parameters & formulas - dependent parameters with no formula; formulas that
+     reference an undefined symbol; and CASING mismatches (openLCA resolves
+     parameter names case-insensitively, so e.g. "diesel_MGO" still finds
+     "Diesel_MGO" - it works, but the report flags it as inconsistent).
+  E. Flow hygiene          - flows defined but never used by any process (orphans).
+
+IMPORTANT - what it does NOT do: it does not judge whether your ecoinvent
+dataset choices, cut-offs, or emission factors are scientifically appropriate.
+That is your LCA expertise. This tool guarantees the model is structurally sound
+and complete so that kind of error can't hide - it does not replace expert review.
+
+Current model (WINDFARM-EOL-CORRECTED-MERGED) validates as:
+  1 ERROR   - EOL5.3.6.4 SCADA reference exchange has no unit (set it to "kg"
+              in the openLCA exchange editor - the 1-click item 6 fix).
+  WARNINGS  - the three known material-inventory gaps that need your NREL data
+              (Generator stator +342,300 kg, Gen rotor +158,560 kg, Hub
+              +50,000 kg) plus a handful of small recovery-routing deltas; the
+              diesel_MGO / mgoliter_Mj casing notes; and one orphan phantom flow
+              "Rotor+hub recovery aggregator" you can delete.
