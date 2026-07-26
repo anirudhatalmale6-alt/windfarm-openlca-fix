@@ -293,6 +293,32 @@ def main():
         info.append(f"Unlinked technosphere exchanges: {len(dangle_in)} product input(s), "
                     f"{len(dangle_waste)} waste output(s) - review vs your cut-off criteria.")
 
+        # ---- data-completeness snapshot (ISO 14044 data-quality requirements) ----
+        n_exch = with_unc = with_dq = with_cost = 0
+        doc_full = 0
+        DOC_FIELDS = ("inventoryMethod", "dataCompletenessDescription", "dataSelectionDescription",
+                      "dataTreatmentDescription", "samplingDescription", "dataCollectionDescription",
+                      "restrictionsDescription", "intendedApplication", "timeDescription",
+                      "geographyDescription", "technologyDescription", "dataSources")
+        for d in procs.values():
+            for e in d.get("exchanges", []):
+                n_exch += 1
+                if e.get("uncertainty"): with_unc += 1
+                if e.get("dqEntry"): with_dq += 1
+                if e.get("costValue") is not None or e.get("costFormula") or e.get("currency"):
+                    with_cost += 1
+            pd = d.get("processDocumentation") or {}
+            if any((pd.get(k) or "").strip() for k in DOC_FIELDS if isinstance(pd.get(k), str)):
+                doc_full += 1
+        info.append(f"Data-quality fill (design-time, set via prompt): uncertainty on "
+                    f"{with_unc}/{n_exch} exchanges, pedigree/DQ on {with_dq}/{n_exch}, "
+                    f"costs on {with_cost}/{n_exch}.")
+        info.append(f"ISO documentation (goal/scope/sources/representativeness) substantially "
+                    f"filled on {doc_full}/{len(procs)} processes.")
+        if with_unc == 0:
+            info.append("  -> No uncertainty distributions set: Monte Carlo / uncertainty analysis "
+                        "(ISO 14044 interpretation) won't be meaningful until these are added.")
+
         # dedupe warnings while preserving order
         seen = set(); uwarns = []
         for m in warns:

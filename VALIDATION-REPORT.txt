@@ -57,6 +57,9 @@ INFO:
   - Elementary-flow exchanges (direct emissions/resources): 43.
   - Double-counting (ambiguous providers): 0 found.
   - Unlinked technosphere exchanges: 1 product input(s), 18 waste output(s) - review vs your cut-off criteria.
+  - Data-quality fill (design-time, set via prompt): uncertainty on 0/588 exchanges, pedigree/DQ on 0/588, costs on 5/588.
+  - ISO documentation (goal/scope/sources/representativeness) substantially filled on 0/55 processes.
+  -   -> No uncertainty distributions set: Monte Carlo / uncertainty analysis (ISO 14044 interpretation) won't be meaningful until these are added.
 
 ------------------------------------------------------------------------------
 RESULT: 1 error(s), 43 warning(s)
