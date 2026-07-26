@@ -85,3 +85,38 @@ script → check the table → import the merged zip into a fresh DB → calcula
 repeat until the recovery branch balances.
 
 No third-party libraries needed. Python 3.8+.
+
+
+OVERWRITING IN PLACE (no new database each loop)
+------------------------------------------------
+You do NOT have to create a new database every round. To keep working in your
+one database, during File > Import > Linked Data (JSON-LD) make sure openLCA is
+set to OVERWRITE / update existing data sets (not "keep existing"). Then the
+16 edited processes replace the old ones in place.
+
+STOPPING A NEW SUGGESTION FROM UNDOING AN EARLIER FIX
+-----------------------------------------------------
+This is the real risk with overwriting: an AI-regenerated process sometimes
+drops a correction it made in a previous round, so overwriting silently
+deteriorates a good fix. Two safeguards:
+
+1. Always regenerate the next fix against a FRESH EXPORT of your CURRENT
+   (already-corrected) database - never against the original. That way every
+   accumulated fix is already the baseline, and the AI only has to add the new
+   change on top.
+
+2. Run this script before every import and read the CHANGE PREVIEW it prints.
+   For each process it shows exactly what the fix will add / remove / change vs
+   your current database, e.g.:
+
+       CHANGE > EOL5.4.1 ... Rotor and hub
+           + add    Rotor+hub-blades, recovered  (195,000)
+           - REMOVE Rotor and hub-blades recovered  <-- check this isn't undoing a fix
+
+   If you see a "- REMOVE" or a "~ change" that would revert something you
+   already fixed, DON'T import that round - fix the AI suggestion first. The
+   preview is your guard against deterioration.
+
+Double-click helper: run_merge.bat asks for the two zip names and runs the
+merge for you (no terminal needed). Keep run_merge.bat, merge_openlca_fix.py
+and your two zips in the same folder.

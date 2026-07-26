@@ -68,11 +68,48 @@ def _load(p):
         return json.load(f)
 
 
+def _exch_map(d):
+    """flow-name -> (isInput, amount, formula) for every exchange."""
+    m = {}
+    for e in d.get("exchanges", []):
+        f = e.get("flow", {}) or {}
+        m[f.get("name")] = (bool(e.get("isInput")),
+                            round(float(e.get("amount", 0) or 0), 3),
+                            e.get("amountFormula", "") or "")
+    return m
+
+
+def _preview_process_change(base_path, new_path):
+    """Print a human diff of exchanges between the base (current DB) and the
+    incoming fix, so a regenerated suggestion that would UNDO an earlier fix is
+    visible BEFORE import."""
+    base = _load(base_path)
+    new = _load(new_path)
+    a, b = _exch_map(base), _exch_map(new)
+    added = [k for k in b if k not in a]
+    removed = [k for k in a if k not in b]
+    changed = [k for k in b if k in a and a[k] != b[k]]
+    if not (added or removed or changed):
+        return  # identical, nothing to report
+    print(f"\n  CHANGE > {new.get('name')}")
+    for k in added:
+        print(f"      + add    {k}  ({b[k][1]:,})")
+    for k in removed:
+        print(f"      - REMOVE {k}  (was {a[k][1]:,})  <-- check this isn't undoing a fix")
+    for k in changed:
+        print(f"      ~ change {k}  {a[k][1]:,} -> {b[k][1]:,}")
+
+
 def overlay(full_dir, fix_dir, out_dir):
-    """Copy full export to out_dir, then overlay fix objects. Return counts."""
+    """Copy full export to out_dir, then overlay fix objects. Return counts.
+    Prints a per-process change preview vs the current database."""
     if os.path.exists(out_dir):
         shutil.rmtree(out_dir)
     shutil.copytree(full_dir, out_dir)
+
+    print("\n" + "=" * 78)
+    print("CHANGE PREVIEW  (what the fix does to your CURRENT database)")
+    print("=" * 78)
 
     counts = {}
     for sub in ("processes", "flows", "parameters", "flow_properties",
@@ -90,6 +127,8 @@ def overlay(full_dir, fix_dir, out_dir):
             target = os.path.join(dst, name)
             if os.path.exists(target):
                 replaced += 1
+                if sub == "processes":
+                    _preview_process_change(target, os.path.join(src, name))
             else:
                 added += 1
             shutil.copy2(os.path.join(src, name), target)
