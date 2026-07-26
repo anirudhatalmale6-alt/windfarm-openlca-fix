@@ -149,6 +149,23 @@ def main():
 
             refcount = 0
             massin = massout = 0.0
+            # intra-process double-count: an IDENTICAL exchange line repeated
+            # (same flow, side, provider AND amount/formula). The same flow with
+            # different providers or amounts is legitimate in openLCA, so only an
+            # exact-duplicate line is a real accidental double-count signal.
+            line_seen = defaultdict(int); line_name = {}
+            for e in d.get("exchanges", []):
+                fl = e.get("flow") or {}
+                key = (bool(e.get("isInput")), fl.get("@id"),
+                       (e.get("defaultProvider") or {}).get("@id"),
+                       e.get("amountFormula") or round(float(e.get("amount", 0) or 0), 6))
+                line_seen[key] += 1
+                line_name[key] = fl.get("name")
+            for key, c in line_seen.items():
+                if c > 1:
+                    W(f"[dup-exchange] {pname}: identical exchange line {line_name[key]!r} "
+                      f"({'input' if key[0] else 'output'}, same provider & amount) repeated {c}x "
+                      f"- double-counts within the process unless intended.")
             for e in d.get("exchanges", []):
                 fl = e.get("flow") or {}
                 fid = fl.get("@id")
