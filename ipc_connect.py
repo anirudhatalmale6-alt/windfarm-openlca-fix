@@ -113,19 +113,46 @@ def main():
         sys.exit(2)
 
     name_filter = sys.argv[2] if len(sys.argv) > 2 else None
+    url = f"http://localhost:{port}"
 
-    print(f"Connecting to openLCA IPC Server on http://localhost:{port} ...")
+    # ---- PREFLIGHT: does the server actually RESPOND (fast, with a timeout)? ----
+    # If it accepts the connection but never answers, the usual cause is that the
+    # IPC Server was started as gRPC (checkbox ticked) instead of JSON-RPC, or no
+    # database is open. We test with a tiny request so we fail clearly, not hang.
+    import requests
+    print(f"Checking the openLCA IPC Server on {url} ...")
+    try:
+        ping = requests.post(url, json={"jsonrpc": "2.0", "id": 0,
+                             "method": "data/get/descriptors",
+                             "params": {"@type": "UnitGroup"}}, timeout=15)
+        ping.json()  # must be valid JSON-RPC
+    except requests.exceptions.Timeout:
+        print("\nThe server accepted the connection but did NOT respond within 15s.")
+        print("Most likely cause: the IPC Server was started in gRPC mode.")
+        print("Fix: in openLCA's 'Start an IPC Server' dialog, make sure")
+        print("  'Start as gRPC service (experimental)' is UNCHECKED, then click the")
+        print("  green run button again. Also confirm a database is OPEN (bold).")
+        sys.exit(1)
+    except Exception as ex:
+        print(f"\nCould not reach the IPC server: {ex}")
+        print("Is openLCA open, and is the IPC Server started (green run button) on this port?")
+        sys.exit(1)
+    print("Server is responding (JSON-RPC OK).")
+
     client = ipc.Client(port)
+    # give every request a default timeout so nothing hangs forever
+    _orig_post = client._s.post
+    client._s.post = lambda *a, **k: _orig_post(*a, **{**k, "timeout": k.get("timeout", 300)})
 
     # Fetch lightweight descriptors first. A live database usually also contains
     # the ecoinvent BACKGROUND (tens of thousands of processes) - pulling all of
     # those in full would hang. We keep only FOREGROUND processes (not from a
     # mounted library), optionally narrowed by a name/category filter.
+    print("Fetching the process list ...")
     try:
         descriptors = client.get_descriptors(o.Process)
     except Exception as ex:
-        print(f"Could not reach the IPC server: {ex}")
-        print("Is openLCA open, and is the IPC Server started (green run button) on this port?")
+        print(f"Could not list processes: {ex}")
         sys.exit(1)
 
     def is_foreground(d):
