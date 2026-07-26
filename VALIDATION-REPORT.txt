@@ -5,7 +5,7 @@ openLCA MODEL VALIDATION   (55 processes, 193 flows, 15 global params)
 ERRORS (1)  - would break calculation / import:
   x [unit] EOL5.3.6.4—Material recovery & waste routing (CONTROL/SCADA): exchange 'CONTROL/SCADA recovered' has NO unit set
 
-WARNINGS (24)  - review, not necessarily wrong:
+WARNINGS (40)  - review, not necessarily wrong:
   ! [casing] O3-IEA15-OP-Corrosion protection renewal-new / exchange 'diesel, burned in fishing vessel': formula uses 'diesel_MGO' but the parameter is defined with different capitalisation (resolves, but inconsistent)
   ! [balance] EOL5.3.3.3—Material recovery & waste routing (YAW SYSTEM (8× drives): IN 60,000 vs OUT 33,678 (delta +26,322 kg)
   ! [balance] EOL5.3.3.5—Material recovery & waste routing (NACELLE COVER): IN 20,000 vs OUT 18,450 (delta +1,550 kg)
@@ -30,9 +30,30 @@ WARNINGS (24)  - review, not necessarily wrong:
   ! [balance] EOL5.3.6.1—Material recovery & waste routing (TRANSFORMER (in-nacelle): IN 45,000 vs OUT 39,060 (delta +5,940 kg)
   ! [balance] EOL5.3.6.2—Material recovery & waste routing (GIS SWITCHGEAR): IN 12,000 vs OUT 12,720 (delta -720 kg)
   ! [orphan] flow never used by any process: 'Rotor+hub recovery aggregator'
+  ! [unlinked-input] O1-IEA15-OP-Scheduled maintenance: product input 'Vessel hour' has no provider and is not produced internally - it will contribute 0 to CO2/energy unless you link it to a background dataset.
+  ! [unlinked-waste] Sub-Process M1.1.2: Main Shaft,bedplate & structural nacelle: waste output 'waste steel' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] Sub-Process M1.1.5: Nacelle cover: waste output 'glass cullet, from fluorescent lamps treatment' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] Sub-Process M1.1.5: Nacelle cover: waste output 'residues, MSWI-WWT, WW from polyester recycling' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] O3-IEA15-OP-Corrosion protection renewal-new: waste output 'waste foundry sand' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] O3-IEA15-OP-Corrosion protection renewal-new: waste output 'waste paint on metal' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] O3-IEA15-OP-Corrosion protection renewal-new: waste output 'waste aluminium' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] O3-IEA15-OP-Corrosion protection renewal-new: waste output 'Scrap metal' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] M1.6-IEA15-MFG-Tower: waste output 'hazardous waste, for incineration' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] M1.6-IEA15-MFG-Tower: waste output 'waste foundry sand' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] O1-IEA15-OP-Scheduled maintenance: waste output 'CUTOFF Miscellaneous metal scrap' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] EOL5.3.2—Material recovery & waste(MONOPILE): waste output 'waste steel' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] EOL5.3.2—Material recovery & waste(MONOPILE): waste output 'waste emulsion paint' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] EOL5.3.2—Material recovery & waste(MONOPILE): waste output 'waste aluminium' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] M1.4-IEA15-MFG-Hub/Machining: waste output 'waste foundry sand' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
+  ! [unlinked-waste] M1.9-IEA15-MFG-Dynamic_Cable-MP: waste output 'waste polyethylene/polypropylene product' has no treatment provider - its end-of-life burden won't be counted. OK only if your cut-off criteria say so (ISO 14044).
 
 INFO:
   - 285 exchange default-providers point to background datasets not in this export (normal for a foreground model).
+  - Life-cycle stages present: RAW/manufacturing=yes, Transport=yes, Installation=yes, Operation=yes, End of Life=yes
+  - Functional unit (exactly 1 reference flow) set on 55/55 processes.
+  - Elementary-flow exchanges (direct emissions/resources): 43.
+  - Double-counting (ambiguous providers): 0 found.
+  - Unlinked technosphere exchanges: 1 product input(s), 18 waste output(s) - review vs your cut-off criteria.
 
 ------------------------------------------------------------------------------
-RESULT: 1 error(s), 24 warning(s)
+RESULT: 1 error(s), 40 warning(s)

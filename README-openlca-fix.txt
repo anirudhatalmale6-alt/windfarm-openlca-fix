@@ -146,10 +146,39 @@ It reports, split into ERRORS (would break calculation) and WARNINGS (review):
      "Diesel_MGO" - it works, but the report flags it as inconsistent).
   E. Flow hygiene          - flows defined but never used by any process (orphans).
 
+  F. Double-counting       - a product/waste flow that is the reference output of
+     MORE THAN ONE process. openLCA then can't pick a single provider when you
+     build the product system, so it can link the same output twice and
+     double-count. (Your model currently shows 0 of these - items 4 & 7 removed
+     the one that existed, the shared "Rotor and hub-blades" flow.)
+  G. Calculation readiness (for CO2 / energy to be RIGHT) - a technosphere
+     exchange that neither links to another foreground process nor has a
+     background provider contributes ZERO to the result, silently. It flags:
+       - product INPUTS with no provider and no internal producer, and
+       - waste OUTPUTS with no treatment provider.
+     These are the things that make CO2/energy look fine but be understated.
+  H. ISO 14040/14044 completeness snapshot - which life-cycle stages are present,
+     whether every process has exactly one reference flow (functional unit),
+     elementary-flow coverage, double-count count, and unlinked-exchange count.
+
 IMPORTANT - what it does NOT do: it does not judge whether your ecoinvent
-dataset choices, cut-offs, or emission factors are scientifically appropriate.
-That is your LCA expertise. This tool guarantees the model is structurally sound
-and complete so that kind of error can't hide - it does not replace expert review.
+dataset choices, cut-offs, or emission factors are scientifically appropriate,
+and it is NOT a formal ISO compliance certification (that needs your documented
+goal & scope, LCIA method, interpretation and critical review). It is a
+structural completeness gate: it guarantees no broken reference, missing unit,
+ambiguous provider, unbalanced recovery process or silently-unlinked exchange
+can hide before you build the product system - so your CO2/energy numbers rest
+on a sound model. It does not replace your expert judgement.
+
+READINESS FOR PRODUCT SYSTEM + CO2/ENERGY (current corrected model):
+  Double-counting ......... 0  (safe to link)
+  Functional unit set ..... 55/55 processes
+  Life-cycle stages ....... RAW/MFG, Transport, Installation, Operation, EOL all present
+  Blocking error .......... 1 (SCADA null unit - fix before calculating)
+  Unlinked for CO2/energy . 1 product input ("Vessel hour") + 18 waste outputs
+                            with no treatment provider - decide each against your
+                            cut-off criteria; link the ones that should carry a
+                            burden or you'll understate impacts.
 
 Current model (WINDFARM-EOL-CORRECTED-MERGED) validates as:
   1 ERROR   - EOL5.3.6.4 SCADA reference exchange has no unit (set it to "kg"
