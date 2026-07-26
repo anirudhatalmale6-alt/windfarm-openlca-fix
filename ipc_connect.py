@@ -112,16 +112,55 @@ def main():
         print("Missing library. Run:  pip install olca-ipc olca-schema")
         sys.exit(2)
 
+    name_filter = sys.argv[2] if len(sys.argv) > 2 else None
+
     print(f"Connecting to openLCA IPC Server on http://localhost:{port} ...")
     client = ipc.Client(port)
+
+    # Fetch lightweight descriptors first. A live database usually also contains
+    # the ecoinvent BACKGROUND (tens of thousands of processes) - pulling all of
+    # those in full would hang. We keep only FOREGROUND processes (not from a
+    # mounted library), optionally narrowed by a name/category filter.
     try:
-        processes = client.get_all(o.Process)
+        descriptors = client.get_descriptors(o.Process)
     except Exception as ex:
         print(f"Could not reach the IPC server: {ex}")
-        print("Is openLCA open, and is Tools > Developer tools > IPC Server started on this port?")
+        print("Is openLCA open, and is the IPC Server started (green run button) on this port?")
         sys.exit(1)
 
-    print(f"Read {len(processes)} processes from the live database (nothing was modified).\n")
+    def is_foreground(d):
+        if getattr(d, "library", None):        # background/ecoinvent library -> skip
+            return False
+        if name_filter and name_filter.lower() not in \
+                ((d.name or "") + " " + (d.category or "")).lower():
+            return False
+        return True
+
+    fg = [d for d in descriptors if is_foreground(d)]
+    print(f"{len(descriptors)} processes in the database; {len(fg)} foreground "
+          f"(non-library) to check" + (f" matching '{name_filter}'." if name_filter else "."))
+    if not fg:
+        print("No foreground processes found. If your model sits under a category, re-run with a "
+              "filter word, e.g.:  run_ipc.bat  (then this script picks it up)  or  "
+              "python ipc_connect.py 8080 EOL")
+        sys.exit(1)
+    if len(fg) > 400:
+        print(f"That's a lot ({len(fg)}). If it's slow, re-run with a filter word to narrow it, "
+              f"e.g.  python ipc_connect.py {port} <part-of-your-model-name>")
+
+    processes = []
+    for i, d in enumerate(fg, 1):
+        try:
+            p = client.get(o.Process, d.id)
+            if p:
+                processes.append(p)
+        except Exception as ex:
+            print(f"  (skipped {d.name!r}: {ex})")
+        if i % 10 == 0 or i == len(fg):
+            print(f"  read {i}/{len(fg)} ...")
+
+    print(f"\nRead {len(processes)} foreground processes from the live database "
+          f"(nothing was modified).\n")
     errors, warnings, mass_rows = check_processes(processes)
 
     with open("live_mass_balance.csv", "w", newline="", encoding="utf-8") as f:

@@ -3,12 +3,13 @@ REM ===================================================================
 REM  run_ipc.bat  -  connect to a LIVE openLCA database (READ-ONLY)
 REM
 REM  Before running:
-REM    1) Open openLCA with your database.
-REM    2) Tools > Developer tools > IPC Server -> Start. Note the port.
+REM    1) Open openLCA with your database (active / bold).
+REM    2) Tools > Developer tools > IPC Server -> click the green RUN
+REM       button (leave "gRPC" unchecked). Note the port.
 REM
 REM  Put ipc_connect.py and this file in the same folder, then
-REM  double-click. It installs the client library the first time,
-REM  asks for the port, and runs a safe read-only check.
+REM  double-click. Installs the client library the first time, asks
+REM  for the port, and runs a safe read-only check.
 REM ===================================================================
 setlocal
 cd /d "%~dp0"
@@ -28,9 +29,14 @@ set /p PORT="openLCA IPC Server port (press Enter for 8080): "
 if "%PORT%"=="" set PORT=8080
 
 echo.
+echo Optional: type part of your model name to check only those processes
+echo (e.g. EOL, or IEA, or Turbine). Leave blank to check all foreground.
+set /p FILTER="Filter word (or press Enter for all): "
+
+echo.
 echo Connecting read-only to openLCA on port %PORT% ...
 echo.
-python ipc_connect.py %PORT%
+python ipc_connect.py %PORT% %FILTER%
 
 echo.
 echo Done. See live_validation.txt and live_mass_balance.csv in this folder.
