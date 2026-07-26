@@ -155,25 +155,41 @@ def main():
         print(f"Could not list processes: {ex}")
         sys.exit(1)
 
+    # Background datasets (ecoinvent etc.) may be imported as normal processes,
+    # not as a mounted library - so we can't rely on the library flag. Instead we
+    # exclude known BACKGROUND category roots by name. Everything else (all your
+    # own models - monopile, floating, substation, cables, ...) is foreground.
+    BACKGROUND_ROOTS = {"ECOINVENT", "ECOINVENT_3", "ECOINVENT 3.12", "BACKGROUND"}
+
     def is_foreground(d):
-        if getattr(d, "library", None):        # background/ecoinvent library -> skip
+        cat = d.category or ""
+        root = cat.split("/")[0].strip().upper()
+        if root in BACKGROUND_ROOTS:           # ecoinvent background -> skip
+            return False
+        if getattr(d, "library", None):        # mounted library -> skip
             return False
         if name_filter and name_filter.lower() not in \
-                ((d.name or "") + " " + (d.category or "")).lower():
+                ((d.name or "") + " " + cat).lower():
             return False
         return True
 
     fg = [d for d in descriptors if is_foreground(d)]
     print(f"{len(descriptors)} processes in the database; {len(fg)} foreground "
-          f"(non-library) to check" + (f" matching '{name_filter}'." if name_filter else "."))
+          f"(your models, ecoinvent excluded)" + (f" matching '{name_filter}'." if name_filter else "."))
+    # show which of your model folders were picked up
+    roots = {}
+    for d in fg:
+        r = (d.category or "(uncategorised)").split("/")[0]
+        roots[r] = roots.get(r, 0) + 1
+    if roots:
+        print("  models found: " + ", ".join(f"{r} ({n})" for r, n in sorted(roots.items())))
     if not fg:
-        print("No foreground processes found. If your model sits under a category, re-run with a "
-              "filter word, e.g.:  run_ipc.bat  (then this script picks it up)  or  "
-              "python ipc_connect.py 8080 EOL")
+        print("No foreground processes found. Re-run with a filter word, e.g. "
+              f"python ipc_connect.py {port} MONOPILE")
         sys.exit(1)
-    if len(fg) > 400:
-        print(f"That's a lot ({len(fg)}). If it's slow, re-run with a filter word to narrow it, "
-              f"e.g.  python ipc_connect.py {port} <part-of-your-model-name>")
+    if len(fg) > 600:
+        print(f"That's a lot ({len(fg)}). To check just one model, re-run with a filter word, "
+              f"e.g.  python ipc_connect.py {port} SUBSTATION")
 
     processes = []
     for i, d in enumerate(fg, 1):
