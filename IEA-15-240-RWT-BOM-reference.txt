@@ -1,0 +1,83 @@
+========================================================================
+ IEA-15-240-RWT  -  OFFICIAL COMPONENT MASSES (authoritative BOM)
+ Source: github.com/IEAWindSystems/IEA-15-240-RWT
+         Documentation/IEA-15-240-RWT_tabular.xlsx
+         sheets "Overview" and "Nacelle Mass Properties"
+ All masses in kg. Use these to close your mass-balance gaps.
+========================================================================
+
+ROTOR-NACELLE ASSEMBLY (RNA)  total = 945,770 kg
+------------------------------------------------------------------------
+ROTOR
+  Blade (each)                              67,920      x3 = 203,763
+  Hub (casting only)                        21,440
+  Hub_System (hub+spinner+pitch+fittings)   69,006
+      -> Hub_System already INCLUDES the 21,440 hub casting;
+         don't add both. Use 69,006 for the whole hub assembly,
+         or itemise: hub casting 21,440 + spinner/pitch 47,566.
+
+NACELLE  total = 673,001 kg  (this is the big one for your gaps)
+  main bearing 1 (mb1)                       48,092
+  main bearing 2 (mb2)                       13,479
+  low-speed shaft (lss)                      15,734
+  brake                                      24,290
+  generator ROTOR                           130,349   <- your gap item
+  generator STATOR                          238,490   <- your gap item
+    ( generator TOTAL = rotor+stator =      368,839 ) <- don't double count
+  hvac / cooling                              9,382
+  nose / turret                              10,876
+  bedplate                                   42,274
+  platform (mainframe platform)              48,672
+  nacelle cover                              20,556
+  transformer                                30,635
+  power converter                            11,984
+  yaw system                                 28,187
+  ------------------------------------------------------
+  sum of above = 673,001 kg (matches nacelle total)
+
+TOWER  (fixed-bottom / monopile config)     853,460
+------------------------------------------------------------------------
+
+SUPPORT STRUCTURE - MONOPILE variant
+------------------------------------------------------------------------
+  Monopile                               1,309,950
+  Transition piece                         100,000
+  (steel, 7,800 kg/m3)
+
+SUPPORT STRUCTURE - FLOATING variant (VolturnUS-S)
+------------------------------------------------------------------------
+  Floating tower                         1,483,070   (heavier than the
+                                                      monopile tower - use
+                                                      this for the floater)
+  Semi-sub hull (steel)                  4,889,560
+  Fixed ballast (concrete/iron)          2,540,000
+  Fluid ballast (seawater)               9,522,680   <- NOT manufactured;
+                                                        exclude from BOM /
+                                                        material demand.
+
+MATERIALS (from "Material Properties" sheet) - for your flow mapping
+------------------------------------------------------------------------
+  Tower / monopile / hull   : steel        7,800 kg/m3
+  Drivetrain shafts/bedplate: steel_drive  7,850 kg/m3 (ASTM 4140)
+  Hub, nose castings        : cast_iron    7,200 kg/m3
+  Blades                    : glass fibre (uni/biax/triax) + CarbonUD
+                              spar caps + epoxy resin + PVC/foam core
+                              + gelcoat + adhesive  (see Blade Shell Layup
+                              sheet for exact ply masses)
+
+NOTES FOR YOUR LCA
+------------------------------------------------------------------------
+- Two design files in WT_Ontology/ match your two variations exactly:
+    IEA-15-240-RWT.yaml               = monopile / fixed-bottom base
+    IEA-15-240-RWT_VolturnUS-S.yaml   = floating (semi-sub)
+- The generator is direct-drive: there is NO gearbox (gearbox mass = 0,
+  hss mass = 0). If your BOM lists a gearbox, remove it.
+- Generator rotor + stator = 368,839. Enter them as two items OR one -
+  never both the two parts AND the 368,839 total, or you double-count
+  ~369 t.
+- Blades are per-turbine 3 x 67,920. If your process is per-blade use
+  67,920; per-turbine use 203,763.
+- Seawater fluid ballast (floater) is not a purchased/manufactured
+  material - keep it out of material demand and CO2, or your floater
+  numbers inflate by ~9,500 t.
+========================================================================
