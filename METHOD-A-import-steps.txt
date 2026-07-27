@@ -1,0 +1,53 @@
+========================================================================
+ METHOD A - Import Claude's corrections into openLCA (keep by your screen)
+========================================================================
+
+WHAT YOU NEED
+  - claude-corrections-json-ld.zip   (the fix package from Claude)
+  - openLCA open, with your database ACTIVE (bold in the Navigator)
+
+  You do NOT need the windfarm-openlca-fix folder for this method.
+  The Claude zip goes straight into openLCA.
+
+------------------------------------------------------------------------
+STEP 1 - (recommended) Back up first
+------------------------------------------------------------------------
+  Navigator > right-click your database > Export > Zip file (JSON-LD)
+  Save it somewhere safe. If a round goes wrong you can re-import this.
+
+------------------------------------------------------------------------
+STEP 2 - Import the corrections
+------------------------------------------------------------------------
+  File > Import > Other > "Zip file (JSON-LD)"  > Next
+  Browse to  claude-corrections-json-ld.zip  > Open
+
+------------------------------------------------------------------------
+STEP 3 - Choose the OVERWRITE mode  (this is the key step)
+------------------------------------------------------------------------
+  On the dialog with the three radio buttons, pick:
+
+      (o)  Overwrite all existing data sets
+
+  NOT "Never update" and NOT "Update newer versions" - those leave your
+  old processes untouched, which is why earlier imports "made no change".
+
+  Click Finish.
+
+------------------------------------------------------------------------
+STEP 4 - Verify the numbers (no terminal needed)
+------------------------------------------------------------------------
+  Double-click  run_ipc.bat  (openLCA still open, IPC Server running),
+  press Enter for port 8080, type  monopile  as the filter word.
+  Read live_validation.txt - check errors = expected, mass gaps shrinking.
+
+  (Or, on an export zip: double-click run_validate.bat.)
+
+------------------------------------------------------------------------
+LOOP
+------------------------------------------------------------------------
+  Correct BOM / masses  ->  get new zip from Claude  ->  Step 2-4 again.
+
+  GOLDEN RULE: before asking Claude for a new round, export your CURRENT
+  (already-corrected) database and give THAT to Claude - so it corrects
+  on top of your latest fixes and never undoes earlier ones.
+========================================================================
