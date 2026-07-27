@@ -1,0 +1,101 @@
+P1 EOL5.3.3—Material recovery & waste(NACEL: Nacelle-yaw system, recovered 60000 -> 28187
+P1 EOL5.3.3—Material recovery & waste(NACEL: Nacelle-generator stator, recovered 371000 -> 238490
+P1 EOL5.3.3—Material recovery & waste(NACEL: Nacelle-cooling, recovered 25000 -> 9382
+P1 EOL5.3.3—Material recovery & waste(NACEL: Nacelle-cover, recovered 20000 -> 20556
+P1 EOL5.3.3—Material recovery & waste(NACEL: Nacelle-mainshaft/bedplate, recovered 225000 -> 203417
+P1 EOL5.3.6.3—Material recovery & waste rou: POWER CONVERTER recovered 22000 -> 11984
+P1 EOL5.2—Return transport to port: Blade SINGLE manufactured 195000 -> 203763
+P1 EOL5.2—Return transport to port: PMSG Generator, direct-drive, manufactured 371000 -> 368839
+P1 EOL5.2—Return transport to port: Hub/Spinner manufactured 190000 -> 69006
+P1 EOL5.2—Return transport to port: Monopile foundation manufactured 1.3e+06 -> 1.30995e+06
+P1 EOL5.2—Return transport to port: Tower manufactured-MP 1.263e+06 -> 853460
+P1 EOL5.1—Offshore disassembly: PMSG Generator, direct-drive, manufactured 371000 -> 368839
+P1 EOL5.1—Offshore disassembly: Hub/Spinner manufactured 190000 -> 69006
+P1 EOL5.1—Offshore disassembly: Blade SINGLE manufactured 195000 -> 203763
+P1 EOL5.1—Offshore disassembly: Monopile foundation manufactured 1.3e+06 -> 1.30995e+06
+P1 EOL5.1—Offshore disassembly: Tower manufactured-MP 1.263e+06 -> 853460
+P1 EOL5.3.6.1—Material recovery & waste rou: TRANSFORMER (in-nacelle) recovered 45000 -> 30635
+P1 EOL5.4.4—Material recovery & waste(Rotor: Rotor+hub-blades, recovered 195000 -> 203763
+P1 EOL5.4.4—Material recovery & waste(Rotor: Rotor+hub-hub, recovered 190000 -> 69006
+P1 EOL5.4.4—Material recovery & waste(Rotor: Rotor+hub-generator (rotor side), recovered 371000 -> 130349
+P1 Sub-Process M1.1.3: Yaw system: Yaw system Manufactured 60000 -> 28187
+P1 Sub-Process M1.1.1: Generator Stator: PMSG Generator, direct-drive, manufactured 371000 -> 368839
+P1 Sub-Process M1.1.6: Cooling & auxiliarie: Cooling & auxiliaries manufactured 25000 -> 9382
+P1 EOL5.3.3.5—Material recovery & waste rou: Nacelle-cover, recovered 20000 -> 20556
+P1 Sub-Process M1.2.3: Power converter 15 M: Power converter manufactured 22000 -> 11984
+P1 I4-IEA15-INST-Commissioning & testing: Power converter manufactured 22000 -> 11984
+P1 EOL5.3.3.2—Material recovery & waste rou: Nacelle-mainshaft/bedplate, recovered 225000 -> 203417
+P1 EOL5.3.3.3—Material recovery & waste rou: Nacelle-yaw system, recovered 60000 -> 28187
+P1 M1.11-Integration_FAT_packaging: Hub/Spinner manufactured 190000 -> 69006
+P1 M1.11-Integration_FAT_packaging: Blade SINGLE manufactured 195000 -> 203763
+P1 M1.11-Integration_FAT_packaging: PMSG Generator, direct-drive, manufactured 371000 -> 368839
+P1 Sub-Process M1.1.5: Nacelle cover: Nacelle cover manufactured 20000 -> 20556
+P1 M1.4-IEA15-MFG-Hub/Machining: Hub/Spinner manufactured 190000 -> 69006
+P1 M1.10-IEA-15-MFG-Electrical BOP: Power converter manufactured 22000 -> 11984
+P1 M1.10-IEA-15-MFG-Electrical BOP: Transformer manufactured 45000 -> 30635
+P1 EOL5.3.6—Material recovery & waste(BOP) : TRANSFORMER (in-nacelle) recovered 45000 -> 30635
+P1 EOL5.3.6—Material recovery & waste(BOP) : POWER CONVERTER recovered 22000 -> 11984
+P1 Sub-Process M1.2.1: Electrical Transform: Transformer manufactured 45000 -> 30635
+P1 EOL5.3—Onshore cutting & separation: Monopile, recovered 1.3e+06 -> 1.30995e+06
+P1 EOL5.3—Onshore cutting & separation: Tower sections (4×) recovered 1.263e+06 -> 853460
+P1 EOL5.4.1—Material recovery & waste(BLADE: Rotor+hub-blades, recovered 195000 -> 203763
+P1 EOL5.3.1—Material recovery & waste(TOWER: Tower sections (4×) recovered 1.263e+06 -> 853460
+P1 T1-IEA15-TRP-Factory_to_Port: Tower manufactured-MP 1.263e+06 -> 853460
+P1 T1-IEA15-TRP-Factory_to_Port: Monopile foundation manufactured 1.318e+06 -> 1.30995e+06
+P1 T1-IEA15-TRP-Factory_to_Port: Hub/Spinner manufactured 190000 -> 69006
+P1 T1-IEA15-TRP-Factory_to_Port: Blade SINGLE manufactured 195000 -> 203763
+P1 I1-IEA15-INST-Monopile driving & groutin: Monopile foundation manufactured 1.318e+06 -> 1.30995e+06
+P1 M1.7-IEA15-MFG-Monopile foundation: Monopile foundation manufactured 1.318e+06 -> 1.30995e+06
+P1 EOL5.4.3—Material recovery & waste(HUB)R: Rotor+hub-hub, recovered 190000 -> 69006
+P1 Sub-Process M1.1.2: Main Shaft,bedplate : Main shaft, bedplate & structural nacelle manufactured 225000 -> 203417
+P1 EOL5.4.2—Material recovery & waste(GENER: Rotor+hub-generator (rotor side), recovered 371000 -> 130349
+P1 EOL5.3.2—Material recovery & waste(MONOP: Monopile, recovered 1.3e+06 -> 1.30995e+06
+P1 EOL5.3.3.1—Material recovery & waste rou: Nacelle-generator stator, recovered 371000 -> 238490
+P1 M1.6-IEA15-MFG-Tower: Tower manufactured-MP 1.263e+06 -> 853460
+P1 EOL5.3.3.6—Material recovery & waste rou: Nacelle-cooling, recovered 25000 -> 9382
+P1 T3-IEA15-TRP-Port_to_Windpark: Hub/Spinner manufactured 190000 -> 69006
+P1 T3-IEA15-TRP-Port_to_Windpark: Blade SINGLE manufactured 195000 -> 203763
+P1 T3-IEA15-TRP-Port_to_Windpark: Monopile foundation manufactured 1.318e+06 -> 1.30995e+06
+P1 T3-IEA15-TRP-Port_to_Windpark: Tower manufactured-MP 1.263e+06 -> 853460
+P1 M1.5-IEA15-MFG-Nacelle complete: PMSG Generator, direct-drive, manufactured 371000 -> 368839
+P1 M1.5-IEA15-MFG-Nacelle complete: Yaw system Manufactured 60000 -> 28187
+P1 M1.5-IEA15-MFG-Nacelle complete: Nacelle cover manufactured 20000 -> 20556
+P1 M1.5-IEA15-MFG-Nacelle complete: Cooling & auxiliaries manufactured 25000 -> 9382
+P1 M1.5-IEA15-MFG-Nacelle complete: Main shaft, bedplate & structural nacelle manufactured 225000 -> 203417
+P1 I2-IEA15-INST-Tower, nacelle, rotor erec: PMSG Generator, direct-drive, manufactured 371000 -> 368839
+P1 I2-IEA15-INST-Tower, nacelle, rotor erec: Blade SINGLE manufactured 195000 -> 203763
+P1 I2-IEA15-INST-Tower, nacelle, rotor erec: Hub/Spinner manufactured 190000 -> 69006
+P1 I2-IEA15-INST-Tower, nacelle, rotor erec: Tower manufactured-MP 1.263e+06 -> 853460
+P2 MFG M1.3-IEA15-MFG-Blades: scaled inputs x1.0449 (ref Blade SINGLE manufactured->203763)
+P2 MFG Sub-Process M1.1.3: Yaw system: scaled inputs x0.4698 (ref Yaw system Manufactured->28187)
+P2 MFG Sub-Process M1.1.1: Generator Stator: scaled inputs x0.9942 (ref PMSG Generator, direct-drive, manufactured->368839)
+P2 MFG Sub-Process M1.1.6: Cooling & auxiliarie: scaled inputs x0.3753 (ref Cooling & auxiliaries manufactured->9382)
+P2 MFG Sub-Process M1.2.3: Power converter 15 M: scaled inputs x0.5447 (ref Power converter manufactured->11984)
+P2 MFG Sub-Process M1.1.5: Nacelle cover: scaled inputs x1.0278 (ref Nacelle cover manufactured->20556)
+P2 MFG M1.4-IEA15-MFG-Hub/Machining: scaled inputs x0.3632 (ref Hub/Spinner manufactured->69006)
+P2 MFG Sub-Process M1.2.1: Electrical Transform: scaled inputs x0.6808 (ref Transformer manufactured->30635)
+P2 MFG M1.7-IEA15-MFG-Monopile foundation: scaled inputs x0.9939 (ref Monopile foundation manufactured->1.30995e+06)
+P2 MFG Sub-Process M1.1.2: Main Shaft,bedplate : scaled inputs x0.9041 (ref Main shaft, bedplate & structural nacelle manufactured->203417)
+P2 MFG M1.6-IEA15-MFG-Tower: scaled inputs x0.6757 (ref Tower manufactured-MP->853460)
+P3 EOL EOL5.3.6.3—Material recovery & waste rou: outputs rescaled x0.5520 to balance at 11984
+P3 EOL EOL5.3.6.1—Material recovery & waste rou: outputs rescaled x0.7843 to balance at 30635
+P3 EOL EOL5.3.3.5—Material recovery & waste rou: outputs rescaled x1.1141 to balance at 20556
+P3 EOL EOL5.3.3.2—Material recovery & waste rou: outputs rescaled x0.8968 to balance at 203417
+P3 EOL EOL5.3.3.3—Material recovery & waste rou: outputs rescaled x0.8370 to balance at 28187
+P3 EOL EOL5.4.1—Material recovery & waste(BLADE: outputs rescaled x1.0449 to balance at 203763
+P3 EOL EOL5.3.1—Material recovery & waste(TOWER: outputs rescaled x0.6763 to balance at 853460
+P3 EOL EOL5.4.3—Material recovery & waste(HUB)R: outputs rescaled x0.4929 to balance at 69006
+P3 EOL EOL5.4.2—Material recovery & waste(GENER: outputs rescaled x0.6136 to balance at 130349
+P3 EOL EOL5.3.2—Material recovery & waste(MONOP: outputs rescaled x1.0184 to balance at 1.30995e+06
+P3 EOL EOL5.3.3.1—Material recovery & waste rou: outputs rescaled x0.6428 to balance at 238490
+P3 EOL EOL5.3.3.6—Material recovery & waste rou: outputs rescaled x0.4405 to balance at 9382
+P3b BAL EOL5.3.3.4—Material recovery & waste rou: outputs rescaled x1.4170 to close at 35000
+P3b BAL EOL5.3.6.4—Material recovery & waste rou: outputs rescaled x1.0811 to close at 6000
+P3b BAL EOL5.3.4—Material recovery & waste(TRANS: outputs rescaled x0.9998 to close at 370000
+P3b BAL EOL5.3.6.2—Material recovery & waste rou: outputs rescaled x0.9434 to close at 12000
+P3b BAL EOL5.3.5—Material recovery & waste(DYNAM: outputs rescaled x1.0233 to close at 60000
+P4 AGG EOL5.3.3—Material recovery & waste(NACEL: zeroed adjustment input 105112
+P4 AGG EOL5.3.3—Material recovery & waste(NACEL: ref input 630888 -> 535032 (=sum components)
+P4 AGG EOL5.4.4—Material recovery & waste(Rotor: ref input 756000 -> 403118 (=sum components)
+P4 AGG EOL5.3.6—Material recovery & waste(BOP) : ref input 85000 -> 60619 (=sum components)
+P5 M1.5 nacelle: assembled 630888 -> 560269 (comp 665381 - scrap 105112)

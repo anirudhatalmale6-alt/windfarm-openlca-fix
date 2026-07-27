@@ -1,0 +1,55 @@
+process,mass_in_kg,mass_out_kg,delta_kg,must_conserve,status
+EOL5.4.4—Material recovery & waste(Rotor+hub) recovery aggregator,403118.0,403118.0,0.0,yes,BALANCE
+EOL5.3.3—Material recovery & waste(NACELLE) agregator,535032.0,535032.0,0.0,yes,BALANCE
+EOL5.3.3.3—Material recovery & waste routing (YAW SYSTEM (8× drives),28187.0,28187.0,-0.0,yes,BALANCE
+EOL5.3.3.5—Material recovery & waste routing (NACELLE COVER),20556.0,20556.0,0.0,yes,BALANCE
+EOL5.3.3.1—Material recovery & waste routing (GENERATOR STATOR),238490.0,238490.0,0.0,yes,BALANCE
+EOL5.3.3.4—Material recovery & waste routing (PITCH SYSTEM (3× drives),35000.0,35000.0,0.0,yes,BALANCE
+EOL5.3.3.6—Material recovery & waste routing (COOLING SYSTEM),9382.0,9382.0,0.0,yes,BALANCE
+EOL5.3.3.2—Material recovery & waste routing (MAINSHAFT/BEDPLATE),203417.0,203417.0,0.0,yes,BALANCE
+EOL5.3.1—Material recovery & waste(TOWER SECTIONS),853460.0,853460.0,0.0,yes,BALANCE
+EOL5.4.3—Material recovery & waste(HUB)Rotor and hub,69006.0,69006.0,0.0,yes,BALANCE
+EOL5.3.6—Material recovery & waste(BOP) agregator,60619.0,60619.0,0.0,yes,BALANCE
+EOL5.3.2—Material recovery & waste(MONOPILE),1309950.0,1309950.0,0.0,yes,BALANCE
+EOL5.3.6.4—Material recovery & waste routing (CONTROL/SCADA),6000.0,6000.0,0.0,yes,BALANCE
+EOL5.3.6.3—Material recovery & waste routing (POWER CONVERTER (15 MW),11984.0,11984.0,0.0,yes,BALANCE
+EOL5.3.4—Material recovery & waste(TRANSITION PIECE),370000.0,370000.0,0.0,yes,BALANCE
+EOL5.3.5—Material recovery & waste(DYNAMIC CABLE),60000.0,60000.0,0.0,yes,BALANCE
+EOL5.4.1—Material recovery & waste(BLADES)Rotor and hub,203763.0,203763.0,-0.0,yes,BALANCE
+EOL5.4.2—Material recovery & waste(GENERATOR)Rotor and hub,130349.0,130349.0,-0.0,yes,BALANCE
+EOL5.3.6.1—Material recovery & waste routing (TRANSFORMER (in-nacelle),30635.0,30635.0,0.0,yes,BALANCE
+EOL5.3.6.2—Material recovery & waste routing (GIS SWITCHGEAR),12000.0,12000.0,0.0,yes,BALANCE
+EOL5.1—Offshore disassembly,1480.0,8530227.2,-8528747.2,no,n/a (not mass-conserving by design)
+T2-IEA15-TRP-Sea_Transport,4156085.0,11699188.0,-7543103.0,no,n/a (not mass-conserving by design)
+M1.11-Integration_FAT_packaging,641608.0,5216000.0,-4574392.0,no,n/a (not mass-conserving by design)
+O1-IEA15-OP-Scheduled maintenance,4156175.0,40880.0,4115295.0,no,n/a (not mass-conserving by design)
+EOL5.3—Onshore cutting & separation,6950.0,4093096.4,-4086146.4,no,n/a (not mass-conserving by design)
+I4-IEA15-INST-Commissioning & testing,93186.0,4168800.0,-4075614.0,no,n/a (not mass-conserving by design)
+T3-IEA15-TRP-Port_to_Windpark,4156850.0,7745607.0,-3588757.0,no,n/a (not mass-conserving by design)
+EOL5.2—Return transport to port,3910318.0,4499331.0,-589013.0,no,n/a (not mass-conserving by design)
+T1-IEA15-TRP-Factory_to_Port,3687179.0,4113109.4,-425930.4,no,n/a (not mass-conserving by design)
+O2-IEA15-OP-Unscheduled major component,75650.0,334400.0,-258750.0,no,n/a (not mass-conserving by design)
+"I2-IEA15-INST-Tower, nacelle, rotor erection",3901006.0,4101000.0,-199994.0,no,n/a (not mass-conserving by design)
+I3-IEA15-INST-Cable lay & termination,63200.0,133100.0,-69900.0,no,n/a (not mass-conserving by design)
+M1.12-IEA15-Export_Cable-BOTH-ES,205600.0,272000.0,-66400.0,no,n/a (not mass-conserving by design)
+M1.13-IEA15-Static_Cable-MP-ES,205600.0,272000.0,-66400.0,no,n/a (not mass-conserving by design)
+M1.7-IEA15-MFG-Monopile foundation,1376043.8,1310089.1,65954.7,no,n/a (not mass-conserving by design)
+M1.4-IEA15-MFG-Hub/Machining,157242.9,98077.5,59165.4,no,n/a (not mass-conserving by design)
+I1-IEA15-INST-Monopile driving & grouting-MP,1728300.0,1688000.0,40300.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.1.5: Nacelle cover,20556.0,52880.3,-32324.3,no,n/a (not mass-conserving by design)
+M1.6-IEA15-MFG-Tower,948223.7,919560.9,28662.8,no,n/a (not mass-conserving by design)
+M1.10-IEA-15-MFG-Electrical BOP,60619.0,85000.0,-24381.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.2.3: Power converter 15 MW,30831.6,11984.0,18847.6,no,n/a (not mass-conserving by design)
+M1.3-IEA15-MFG-Blades,70533.3,85482.1,-14948.8,no,n/a (not mass-conserving by design)
+"Sub-Process M1.1.2: Main Shaft,bedplate & structural nacelle",203417.0,214740.5,-11323.5,no,n/a (not mass-conserving by design)
+O3-IEA15-OP-Corrosion protection renewal-new,2088.0,9996.9,-7908.9,no,n/a (not mass-conserving by design)
+M1.9-IEA15-MFG-Dynamic_Cable-MP,68000.0,60500.0,7500.0,no,n/a (not mass-conserving by design)
+M1.8-IEA15-MFG-Transition piece,363250.0,370000.0,-6750.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.1.1: Generator Stator,373312.8,379456.8,-6144.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.2.4: Control & SCADA package,6250.0,6000.0,250.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.2.2: Switchgear,12015.0,12000.0,15.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.1.4: Pitch/Braking,35000.0,35000.0,0.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.2.1: Electrical Transformer,30635.0,30635.0,0.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.1.3: Yaw system,28187.0,28187.0,0.0,no,n/a (not mass-conserving by design)
+Sub-Process M1.1.6: Cooling & auxiliaries,9382.0,9382.0,0.0,no,n/a (not mass-conserving by design)
+M1.5-IEA15-MFG-Nacelle complete,665381.0,665381.0,0.0,no,n/a (not mass-conserving by design)

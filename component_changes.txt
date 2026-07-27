@@ -1,0 +1,19 @@
+COMPONENT                         BEFORE       AFTER   NOTE
+Generator stator (EOL)           371,000     238,490   exact IEA - fixes the double
+Generator rotor (EOL)            371,000     130,349   exact IEA - fixes the double
+  -> generator total             742,000     368,839   was counted ~twice; now correct
+Hub                              190,000      69,006   exact IEA (hub assembly)
+Blades (3x)                      195,000     203,763   exact IEA (3 x 67,920)
+Tower                          1,263,000     853,460   exact IEA
+Monopile                    1,300/1,318k   1,309,950   exact IEA (unified)
+Nacelle cover                     20,000      20,556   exact IEA
+Cooling / HVAC                    25,000       9,382   exact IEA
+Yaw system                        60,000      28,187   exact IEA
+Main shaft/bedplate/struct       225,000     203,417   IEA drivetrain-structure sum
+Power converter                   22,000      11,984   exact IEA
+Transformer                       45,000      30,635   exact IEA
+Transition piece                 370,000     370,000   KEPT (your realistic value)
+Pitch/Braking                     35,000      35,000   KEPT (IEA folds pitch into hub)
+Dynamic cable                     60,000      60,000   KEPT (project-specific)
+GIS switchgear                    12,000      12,000   KEPT (no clean IEA line)
+Control/SCADA                      6,000       6,000   KEPT (no clean IEA line)

@@ -1,0 +1,79 @@
+========================================================================
+ WINDFARM MONOPILE - IEA-15-240-RWT MASS CORRECTION
+ file: WINDFARM-EOL-IEA-CORRECTED.zip
+========================================================================
+
+RESULT
+------------------------------------------------------------------------
+- Generator double-count REMOVED (was 742,000 kg at EOL, now the correct
+  368,839 kg split into stator 238,490 + rotor 130,349).
+- All component masses set to the EXACT IEA-15-240-RWT figures
+  (except the ones you chose to keep - see table).
+- MASS BALANCE: 20 of 20 mass-conserving (recovery) processes now
+  balance to the kilogram. 0 gaps. The model closes for publication.
+- Your parameters and formulas were NOT touched.
+
+WHAT CHANGED (before -> after, kg)
+------------------------------------------------------------------------
+see component_changes.txt (full table). Headlines:
+  Generator total   742,000 -> 368,839   (the double-count fix)
+  Hub               190,000 ->  69,006
+  Tower           1,263,000 -> 853,460
+  Cooling            25,000 ->   9,382
+  Yaw                60,000 ->  28,187
+  Transformer        45,000 ->  30,635
+  Power converter    22,000 ->  11,984
+  Blades            195,000 -> 203,763
+  Monopile        1,300/1,318k -> 1,309,950
+
+KEPT AT YOUR VALUE (and balanced by completing the output breakdown)
+------------------------------------------------------------------------
+  Transition piece  370,000   (realistic - IEA's 100 t is simplified)
+  Pitch/Braking      35,000   (IEA folds pitch into the hub assembly)
+  Dynamic cable      60,000   (project-specific, not an IEA turbine part)
+  GIS switchgear     12,000   (no clean IEA line)
+  Control/SCADA       6,000   (no clean IEA line)
+
+METHOD (so it's defensible in your paper)
+------------------------------------------------------------------------
+- Each component's mass set to the IEA figure; its material breakdown was
+  scaled PROPORTIONALLY, so your material composition (steel/copper/magnet
+  ratios) is unchanged - only the totals move. CO2/energy per kg is
+  preserved; totals scale with the corrected mass.
+- Manufacturing material inputs were scaled to match the new component
+  mass, so a lighter tower is now made from proportionally less steel
+  (this is why your results will come out lower - correctly).
+- EOL recovery outputs were rescaled so mass in = mass out exactly.
+- Aggregators (nacelle, rotor+hub, BOP) recomputed as the sum of their
+  corrected sub-components.
+
+HOW TO IMPORT
+------------------------------------------------------------------------
+1. (back up your DB first: right-click DB > Export > Zip file)
+2. File > Import > Other > Zip file (JSON-LD) > WINDFARM-EOL-IEA-CORRECTED.zip
+3. Choose "Overwrite all existing data sets" > Finish
+4. Rebuild your product system and calculate. Expect LOWER CO2/energy than
+   before - that is the corrected result (your masses were overstated).
+
+THINGS TO BE AWARE OF (pre-existing - NOT caused by this correction)
+------------------------------------------------------------------------
+1. One parameter error already in your model:
+     global parameter 'recovered_polymers' references an undefined symbol
+     'xlpe_mass'. You need to define xlpe_mass (or fix that formula).
+     I left all parameters untouched as agreed, so this is for you.
+2. Pass-through inconsistencies that predate this fix (worth a look):
+     - "Nacelle assembled" flow carries 3 different masses across the
+       chain (630,888 / 675,000 / 736,000).
+     - "Monopile" is 1,318,000 in manufacturing but 1,300,000 at EOL
+       (I unified the recovered side to 1,309,950; the manufacturing/
+       transport lines are also 1,309,950 now).
+3. A few identical duplicated output lines (possible internal double-count):
+     - Main shaft/bedplate recovery: 'waste steel' line appears twice
+     - Monopile recovery: 'aluminium ingot' and 'waste aluminium' twice
+   Review whether those are intentional.
+4. Cut-off waste outputs with no treatment provider are correct BY DESIGN
+   (your EOL = cut-off), so they are fine.
+
+Full machine change-log: CHANGE-LOG.txt
+Paper-ready mass table:   mass_balance_table_CORRECTED.csv (20/20 balance)
+========================================================================
