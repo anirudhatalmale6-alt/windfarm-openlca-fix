@@ -1,0 +1,14 @@
+component,your_kg,iea_exact_kg,delta_kg,flag
+Generator STATOR (EOL5.3.3.1),371000,238490,132510,** BIG DIFF **
+Generator rotor side (EOL5.4.2),371000,130349,240651,** BIG DIFF **
+Blades (EOL5.4.1),195000,203763,-8763,~ok (rounding)
+Hub (EOL5.4.3),190000,69006,120994,** BIG DIFF **
+Mainshaft/bedplate (EOL5.3.3.2),225000,203417,21583,check
+Yaw system (EOL5.3.3.3),60000,28187,31813,** BIG DIFF **
+Nacelle cover (EOL5.3.3.5),20000,20556,-556,~ok (rounding)
+Cooling (EOL5.3.3.6),25000,9382,15618,** BIG DIFF **
+Transformer (EOL5.3.6.1),45000,30635,14365,** BIG DIFF **
+Power converter (EOL5.3.6.3),22000,11984,10016,** BIG DIFF **
+Tower sections (EOL5.3.1),1263000,853460,409540,** BIG DIFF **
+Monopile (EOL5.3.2),1300000,1309950,-9950,~ok (rounding)
+Transition piece (EOL5.3.4),370000,100000,270000,** BIG DIFF **
